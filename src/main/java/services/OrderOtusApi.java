@@ -23,7 +23,6 @@ public class OrderOtusApi {
                 given(spec)
                         .with()
                         .body(order)
-                        .log().all()
                         .when()
                         .post(ORDER);
     }
@@ -32,7 +31,6 @@ public class OrderOtusApi {
         return
                 given(spec)
                         .with()
-                        .log().all()
                         .when()
                         .get(ORDER + id);
     }

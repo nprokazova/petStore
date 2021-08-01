@@ -13,7 +13,7 @@ import services.OtusUserApi;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
-public class CreateCheckTestHomework {
+public class CreateCheckTest {
 
     private OtusUserApi userApi = new OtusUserApi();
     private OrderOtusApi orderApi = new OrderOtusApi();
@@ -38,16 +38,13 @@ public class CreateCheckTestHomework {
                 .then()
                 .log().all()
                 .body("type", equalTo("unknown"))
-                .body("message", equalTo("101"))
                 .time(lessThan(5000L))
                 .statusCode(HttpStatus.SC_OK);
 
 
         String messageExpected = response.jsonPath().get("message");
-        String messageExpectedDto = response.as(UserOut.class).getMessage();
 
         Assertions.assertEquals("101", messageExpected);
-        Assertions.assertEquals("101", messageExpectedDto);
 
     }
 

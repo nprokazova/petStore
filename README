@@ -1,0 +1,30 @@
+TestCases
+1. Создание пользователя Ивана Иванова
+- email = "email"
+- firstName = "Ivan"
+- lastName = "Ivanov"
+- password = "Ivan777"
+- phone = "4576898"
+- username "Ivan"
+
+2. Создание пользователя без почты
+- email =  не указываем
+- firstName = "Petr"
+- lastName = "Petrov"
+- password = "Test555"
+- phone = "6543278"
+- username "Petr"
+
+3. Создание заказа
+- id = 0
+- petId = 0
+- quantity = 0
+- shipDate = "2021-07-24T15:28:14.437Z"
+- status = "placed"
+- complete = true
+
+4. Попытка получить заказ, которого нет
+- указываем несуществующий id, например, id =0 (https://petstore.swagger.io/v2/store/order/0)
+
+5. Получение заказа
+- добавляем заказ с id=101 и выполныем запрос get к нему же https://petstore.swagger.io/v2/store/order/101

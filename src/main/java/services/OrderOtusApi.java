@@ -1,35 +1,37 @@
-package lesson;
+package services;
 
+import dto.OtusOrder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
-/**
- * На уроке написали классы
- * CreateUserOtusTest
- * UserOtus
- * UserOtusApi
- */
-public class UserOtusApi {
+public class OrderOtusApi {
     private static final String BASE_URI = "https://petstore.swagger.io/v2/";
     private RequestSpecification spec;
-    private static final String USER = "/user";
+    private static final String ORDER = "/store/order/";
 
-    public UserOtusApi() {
+    public OrderOtusApi() {
         spec = given()
                 .baseUri(BASE_URI)
                 .contentType(ContentType.JSON);
     }
 
-    public Response createUser(UserOtus user) {
+    public Response createOrder(OtusOrder order) {
         return
                 given(spec)
                         .with()
-                        .body(user)
-                        .log().all()
+                        .body(order)
                         .when()
-                        .post(USER);
+                        .post(ORDER);
+    }
+
+    public Response checkOrder(Long id) {
+        return
+                given(spec)
+                        .with()
+                        .when()
+                        .get(ORDER + id);
     }
 }
